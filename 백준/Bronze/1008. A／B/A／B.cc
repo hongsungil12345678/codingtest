@@ -1,10 +1,10 @@
 #include<iostream>
+#include<stdio.h>
 using namespace std;
 int main(){
     double a,b;
     cin>>a>>b;
-    cout<<fixed;
-    cout.precision(9);
-    cout<<a/b;
+    printf("%.9f",a/b);
     return 0;
+    
 }
