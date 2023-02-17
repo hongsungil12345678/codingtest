@@ -1,18 +1,12 @@
 #include<stdio.h>
-#include<iostream>
-using namespace std;
+int i,a,b,c;
 int main(){
-    int temp=0;
-    int max=0,index=0;
-    for(int i=1;i<=9;i++){
-        cin>>temp;
-        if(max<temp){
-            index=i;
-            max=temp;
+	for(int i=1;i<=9;i++){
+        scanf("%d",&c);
+        if(c>a){
+            a=c;b=i;
         }
     }
-    cout<<max<<endl;
-    cout<<index<<endl;
+	printf("%d\n%d",a,b);
     return 0;
-
 }
