@@ -2,17 +2,21 @@
 #include <vector>
 #include <iostream>
 using namespace std;
-
 string solution(string number, int k) {
-    for(int i=0;i<number.size()&&k>0;i++){
-        if(number[i]<number[i+1]){
-            number.erase(i,1);
-            k--;
-            i=-1;
+    string answer="";
+    int max=0;
+    int index=0;
+    for(int i=0;i<number.size();i++){
+        if(max < number[i]){
+            max=number[i];
+            index=i;
+        }
+        if(i==k){// 첫 k개 가장 큰거
+            answer.push_back(max);
+            i=index;
+            k++;
+            max=0;
         }
     }
-    if(k>0){
-        number=number.substr(0,number.size()-k);
-    }
-    return number;
+    return answer;
 }
