@@ -1,9 +1,8 @@
 #include <string>
 #include <vector>
-#include <algorithm>
 using namespace std;
+int answer=-1;
 bool visted[9]={false};
-int answer = -1;
 vector<vector<int>> dun;
 void dfs(int k,int count){
     if(k<0){
@@ -16,8 +15,9 @@ void dfs(int k,int count){
             visted[i]=false;
         }
     }
-    answer=max(answer,count);
+    answer= max(answer,count);
 }
+
 int solution(int k, vector<vector<int>> dungeons) {
     dun=dungeons;
     dfs(k,0);
