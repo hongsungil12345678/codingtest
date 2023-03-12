@@ -2,9 +2,8 @@
 #include <vector>
 #include <math.h>
 #include <algorithm>
+#include <iostream>
 using namespace std;
-//next_permutation -> 오름차순
-
 bool isPrime(int n){
     if(n<2){
         return false;
@@ -18,27 +17,29 @@ bool isPrime(int n){
 }
 int solution(string numbers) {
     int answer = 0;
-    vector<char> ch;
+    vector<char> temp;
     vector<int> num;
     for(int i=0;i<numbers.length();i++){
-        ch.push_back(numbers[i]);
+        cout<<numbers[i]<<endl;
+        temp.push_back(numbers[i]);
     }
-    // 정렬
-    sort(ch.begin(),ch.end());
+    sort(temp.begin(),temp.end());
     do{
-        string temp="";
-        for(int i=0;i<ch.size();i++){
-            temp.push_back(ch[i]);
-            num.push_back(stoi(temp));
+        string temp2="";
+        for(int i=0;i<temp.size();i++){
+            temp2+=temp[i];
+            num.push_back(stoi(temp2));
         }
-    }while(next_permutation(ch.begin(),ch.end()));
-    sort(num.begin(),num.end());
-    num.erase(unique(num.begin(),num.end()),num.end());
+        
+    }while(next_permutation(temp.begin(),temp.end()));
+    sort(num.begin(),num.end());//정렬
+    num.erase(unique(num.begin(),num.end()),num.end());//중복제거
+    
     for(int i=0;i<num.size();i++){
-        if(isPrime(num[i])){
+        if(isPrime(num[i])){//소수 일경우
             answer++;
         }
     }
-    
+
     return answer;
 }
