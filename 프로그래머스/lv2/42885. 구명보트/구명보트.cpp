@@ -7,28 +7,13 @@ using namespace std;
 
 int solution(vector<int> people, int limit) {
     int answer = 0;
-    int endindex=people.size()-1;
-    int firstindex=0;
-    // 정렬
+    int index = people.size()-1;
     sort(people.begin(),people.end());
-    while(true){
-        if(firstindex>endindex){
-            break;
+    for(int i=0,j=index;i<=j;j--){
+        if(people[i]+people[j]<=limit){
+            i++;
         }
-        else if(endindex==firstindex){
-            answer++;
-                break;
-        }
-        else if(people[firstindex]+people[endindex]<=limit){
-            firstindex++;
-            endindex--;
-            answer++;
-        }
-        else{
-            endindex--;
-            answer++;
-        }
-
+        answer++;
     }
     return answer;
 }
